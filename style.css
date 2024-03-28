@@ -2,6 +2,10 @@ h1{
     color: pink;
 }
 
-.container{
+.centre{
     text-align: center;
+}
+
+.gauche{
+    text-align: left;
 }
