@@ -11,9 +11,10 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
-        "laravel/nova": "^5.3",
+        "laravel/nova": "*",
         "laravel/scout": "^10.13",
         "laravel/tinker": "^2.10.1",
+        "myvendor/mycustomtool": "@dev",
         "spatie/laravel-permission": "^6.16"
     },
     "require-dev": {
@@ -59,16 +60,12 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ]
     },
-    "repositories": {
-        "nova": {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
-        },
-        "0": {
+    "repositories": [
+        {
             "type": "composer",
             "url": "https://nova.laravel.com"
         }
-    },
+    ],
     "extra": {
         "laravel": {
             "dont-discover": []

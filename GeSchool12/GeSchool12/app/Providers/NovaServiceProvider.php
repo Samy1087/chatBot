@@ -4,14 +4,15 @@ namespace App\Providers;
 
 use App\Nova\Role;
 use App\Models\User;
+use App\Nova\Etudiant;
 use Laravel\Nova\Nova;
 use App\Nova\Permission;
-use App\Nova\Etudiant; // Assure-toi que c'est bien ici
 
 use Laravel\Fortify\Features;
 use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Nova\NovaApplicationServiceProvider;
+use Myvendor\Mycustomtool\Mycustomtool;
+use Laravel\Nova\NovaApplicationServiceProvider; // Assure-toi que c'est bien ici
 
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -24,24 +25,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Role::class, // Utilise le bon nom ici
             Permission::class,
             \App\Nova\Classe::class,  // Ajoute ici ta ressource Classe
-             Etudiant::class, // Ajoute ici ta ressource Etudiant
-            \App\Nova\Note::class, 
-            \App\Nova\Matiere::class, 
-            \App\Nova\ParentModel::class, 
-            \App\Nova\Enseignant::class, 
-            \App\Nova\Paiement::class, 
-          
+            Etudiant::class, // Ajoute ici ta ressource Etudiant
+            \App\Nova\Note::class,
+            \App\Nova\Matiere::class,
+            \App\Nova\ParentModel::class,
+            \App\Nova\Enseignant::class,
+            \App\Nova\Paiement::class,
+
             \App\Nova\EmploiDuTemps::class,
-            ]);
-        
-    
-       
+        ]);
+    }
 
- 
-
-   
-}
-    
 
     /**
      * Bootstrap any application services.
@@ -112,7 +106,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools(): array
     {
-        return [];
+        return [
+            //new Mycustomtool(),
+        ];
     }
 
     /**

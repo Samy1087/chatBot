@@ -44,9 +44,12 @@ class Paiement extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Parent', 'parent', User::class)->sortable(),
+            BelongsTo::make('Parent', 'parent', ParentModel::class)->sortable()
+                ->display(function ($parent) {
+                    return $parent->name; // Assure-toi que la colonne existe
+                }),
             Number::make('Montant')->sortable(),
-            Select::make('Méthode de Paiement')->options([
+            Select::make('Méthode de Paiement', 'methode_paiement')->options([
                 'especes' => 'Espèces',
             ])->sortable(),
             Select::make('Statut')->options([

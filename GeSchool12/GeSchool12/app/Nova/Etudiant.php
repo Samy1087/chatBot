@@ -55,6 +55,7 @@ class Etudiant extends Resource
     {
         return [
             ID::make()->sortable(),
+            BelongsTo::make('Utilisateur', 'user', User::class)->sortable(),
             Text::make('Nom', 'name'),
             Text::make('Email', 'email'),
             // Utilise 'BelongsTo' pour afficher uniquement le nom de la classe

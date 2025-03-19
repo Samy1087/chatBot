@@ -14,12 +14,13 @@ return new class extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            //$table->unsignedBigInteger('payer_id'); // Peut être un parent ou un étudiant
+            $table->unsignedBigInteger('parent_id')->nullable(); // Déclare la colonne avant la clé étrangère
+            $table->foreign('parent_id')->references('id')->on('parent_models')->onDelete('set null');
             $table->enum('payer_type', ['parent', 'etudiant']); // Indique qui paie
             $table->decimal('montant', 10, 2);
             $table->enum('methode_paiement', ['especes'])->default('especes');
             $table->enum('statut', ['en attente', 'payé'])->default('en attente');
-            $table->dateTime('date_paiement')->nullable();
+            //$table->dateTime('date_paiement')->nullable();
             $table->timestamps();
         });
     }

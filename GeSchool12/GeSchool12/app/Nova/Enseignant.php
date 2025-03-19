@@ -42,8 +42,8 @@ class Enseignant extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Utilisateur', 'user', User::class)->sortable(),
             Text::make('Nom de l\'Enseignant', 'name')->sortable(),
+            BelongsTo::make('Utilisateur', 'user', User::class)->sortable(),
         ];
     }
 

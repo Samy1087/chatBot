@@ -43,7 +43,10 @@ class Classe extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Nom de la Classe', 'name')->sortable(),
-            BelongsTo::make('Enseignant', 'enseignant', Enseignant::class)->sortable(),
+            BelongsTo::make('Enseignant', 'enseignant', Enseignant::class)->sortable()
+                ->display(function ($enseignant) {
+                    return $enseignant->name; // Assure-toi que la colonne existe
+                }),
         ];
     }
 
